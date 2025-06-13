@@ -20,8 +20,7 @@ db = SQLAlchemy(metadata=metadata)
 class Zookeeper(db.Model, SerializerMixin):
     __tablename__ = 'zookeepers'
 
-    serialize_only = ('id', 'name', 'animals.name', 'animals.species',)
-    serialize_rules = ()
+    serialize_rules = ('-animals.zookeeper',)
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True)
